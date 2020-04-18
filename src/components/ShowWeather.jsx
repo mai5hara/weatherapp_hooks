@@ -3,15 +3,19 @@ import {WeatherContext} from '../contexts/WeatherContext';
 import styled from "styled-components";
 import InputCity from './InputCity';
 import BackImage from '../imgs/bg_img.jpg';
+import uuid from 'uuid/v1';
+import DailyWeather from './DailyWeather';
+import CurrentWeather from './CurrentWeather';
 import Clouds from '../imgs/cloud.svg';
 import Rain from '../imgs/rain.svg';
 import Clear from '../imgs/sunny.svg';
 import Snow from '../imgs/snow.svg';
 import Undefind from '../imgs/undefind.svg';
 
-
 const ShowWeather = () => {
     let {showWeather} = useContext(WeatherContext);
+    // setDailyWeather(showWeather.dailyWeather)
+    // console.log(dailyWeather)
     console.log(showWeather)
 
     const showImage = (weather) => {
@@ -31,17 +35,25 @@ const ShowWeather = () => {
 
     const tempCelsius = Math.round(showWeather.temp) + '℃';
     const tempFahrenheit = Math.round((showWeather.temp) * 1.8000 + 32.00) + '℉';
+    const dailyWeathers = showWeather.dailyWeather
+    // const currentWeathers = showWeather.currentWeather
 
     return(
         <Container>
-            <Img src={BackImage}/>
-            <Wrap>
-                <Title>WEATHER MAP</Title>
+            {/* <Img src={BackImage}/> */}
+            <InputCity />
+            <WrapLeft>
+                {/* <Title>WEATHER MAP</Title> */}
                 { showWeather.loading && !showWeather.error ? (
                     <p>loading...</p>
                 ) : showWeather.error ? (
                     <p>Try again..</p>
                 ) : (
+                    
+                    // currentWeathers && currentWeathers.map(currentWeather => (
+                        // <CurrentWeather currentWeathers={currentWeathers}/>
+                    // ))
+                    
                     <div>
                         <City>{showWeather.name}</City>
                         <div>{showImage(showWeather.weather)}</div>
@@ -49,33 +61,38 @@ const ShowWeather = () => {
                             <Detail>{showWeather.weather}</Detail>
                             <Detail>{tempCelsius}</Detail>
                             <Detail>{tempFahrenheit}</Detail>
+                            <p>{showWeather.tempMax}</p>
+                            <p>{showWeather.tempMin}</p>
+                            <p>{showWeather.humidity}</p>
+                            <p>{showWeather.wind}</p>
                         </OutputWeather>
                     </div>
                 )}
-                <InputCity />
-            </Wrap>
+            </WrapLeft>
+            <WrapRight>
+                {dailyWeathers && dailyWeathers.map(dailyWeather => (
+                    <DailyWeather dailyWeather={dailyWeather} key={uuid}/>
+                ))}
+            </WrapRight>
         </Container>
     );
 };
 
 const Container = styled.div`
-    position: relative;
-    width: 100vw;
+    background-color: #FFF3E6;
+    width: 100%;
     height: 100vh;
+    display: flex:
+`;
+
+const WrapLeft = styled.div`
+    width: 50%;
     text-align: center;
 `;
 
-const Wrap = styled.div`
-    background-color: hsl(0, 0%, 100%, 0.5);
-    width: 20%;
-    padding: 2rem 1.5rem;
-    border-radius: 30px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
+const WrapRight = styled.div`
+    width: 50%;
+
 `;
 
 const Title = styled.h1`

@@ -3,7 +3,7 @@ import { WeatherContext } from '../contexts/WeatherContext';
 import styled from "styled-components";
 
 const InputCity = () => {
-    const {currentWeather} = useContext(WeatherContext);
+    const {searchtWeather} = useContext(WeatherContext);
     const [InputValue, SetInputValue] = useState('');
 
     const onChangeInput = (e) => {
@@ -17,14 +17,14 @@ const InputCity = () => {
 
     const callInputValue = (e) => {
         e.preventDefault();
-        currentWeather(InputValue);
+        searchtWeather(InputValue);
         resetInputField();
     }
 
     return (
         <Form>
             <Input type="text" name={InputValue} value={InputValue} onChange={onChangeInput} />
-            <Button type="submit" onClick={callInputValue}>search</Button>
+            <Button type="submit" onClick={callInputValue}></Button>
         </Form>
     )
 };
@@ -32,26 +32,22 @@ const InputCity = () => {
 const Form = styled.form`
     display: flex;
     justify-content: center;
-    margin-top: 1.6rem;
+    padding: 1.6rem 0;
 `;
 
 const Input = styled.input`
-    width: 8rem;
+    width: 20%;
     font-size: 1rem;
     padding: 0 0.4rem;
-    border: 2px solid rgb(255, 128, 25);
-    border-radius: 3px;
+    background-color: transparent;
+    // border-bottom: 1px solid #474747
 `;
 
 const Button =styled.button`
-    font-size: 1rem;
-    height: 2.2rem;
-    width: auto;
-    margin-left: 0.5rem;
-    border-radius: 3px;
-    background-color: rgb(255, 128, 25);
-    cursor: pointer;
-    color: #fff
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: ##474747;
 `;
 
 export default InputCity;

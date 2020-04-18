@@ -11,7 +11,14 @@ export const weatherReducer = (state, action) => {
             return {
                 weather: action.payload.weather,
                 temp: action.payload.temp,
+                tempMax: action.payload.tempMax,
+                tempMin: action.payload.tempMin,
                 name: action.payload.name,
+                humidity: action.payload.humidity,
+                wind: action.payload.wind,
+
+                // currentWeather:action.payload.currentWeather,
+                dailyWeather: action.payload.dailyWeather,
                 error: null,
                 loading: false
             };
@@ -20,6 +27,10 @@ export const weatherReducer = (state, action) => {
                 error: action.payload,
                 loading: false
             };
+        case 'test':
+            return {
+                test: action.payload
+            }
         default:
             return state
     }
