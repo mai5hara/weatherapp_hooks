@@ -1,4 +1,5 @@
 import React from 'react';
+import HourlyWeather from './HourlyWeather';
 
 const DailyWeather = ({dailyWeather}) => {
     console.log(dailyWeather)
@@ -28,10 +29,19 @@ const DailyWeather = ({dailyWeather}) => {
 
     console.log('date ' + date, 'time ' + timestr)
 
+    
 
     return (
         <div>
-            <p>{dayOfWeekStr}</p>
+            <div>
+                <HourlyWeather timestr={timestr} tempCelsius={tempCelsius} weather={weather}/>
+                {/* <p>{timestr}</p>
+                <p>{tempCelsius}</p>
+                <p>{weather}</p> */}
+            </div>
+            <div>
+                {/* <p>{dayOfWeekStr}</p> */}
+            </div>
         </div>
     )
 }

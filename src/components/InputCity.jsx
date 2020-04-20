@@ -23,7 +23,7 @@ const InputCity = () => {
 
     return (
         <Form>
-            <Input type="text" name={InputValue} value={InputValue} onChange={onChangeInput} />
+            <Input type="text" placeholder="City Name" name={InputValue} value={InputValue} onChange={onChangeInput} />
             <Button type="submit" onClick={callInputValue}></Button>
         </Form>
     )
@@ -36,18 +36,22 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-    width: 20%;
+    width: 30%;
+    margin-right: 0.5rem;
     font-size: 1rem;
     padding: 0 0.4rem;
     background-color: transparent;
-    // border-bottom: 1px solid #474747
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #474747;
+    // color: #CBCBCB;
 `;
 
 const Button =styled.button`
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
-    color: ##474747;
+    background-color: #656565;
 `;
 
 export default InputCity;
