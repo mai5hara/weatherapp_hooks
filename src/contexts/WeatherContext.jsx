@@ -8,9 +8,9 @@ export const WeatherProvider = (props) => {
     const [showWeather, dispatch] = useReducer(weatherReducer,[]);
     useEffect(() => {
         Promise.all([
-            fetch(`http://api.openweathermap.org/data/2.5/weather?q=vancouver&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=vancouver&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
                 .then(response => response.json()),
-            fetch(`http://api.openweathermap.org/data/2.5/forecast?q=vancouver&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
+            fetch(`https://api.openweathermap.org/data/2.5/forecast?q=vancouver&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
                 .then(response => response.json())
         ]).then(data => {
             const [data1, data2] = data;
@@ -42,9 +42,9 @@ export const WeatherProvider = (props) => {
         });
 
         Promise.all([
-            fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
                 .then(response => response.json()),
-            fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
+            fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
                 .then(response => response.json())
         ])
         .then(data => {
