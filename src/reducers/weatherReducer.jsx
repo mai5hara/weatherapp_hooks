@@ -16,8 +16,6 @@ export const weatherReducer = (state, action) => {
                 name: action.payload.name,
                 humidity: action.payload.humidity,
                 wind: action.payload.wind,
-
-                // currentWeather:action.payload.currentWeather,
                 dailyWeather: action.payload.dailyWeather,
                 error: null,
                 loading: false

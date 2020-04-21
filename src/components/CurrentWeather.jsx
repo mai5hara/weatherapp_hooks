@@ -12,7 +12,7 @@ const CurrentWeather = ({currentWeather, showImage}) => {
         <div>
             <City>{currentWeather.name}</City>
             <Weather>{currentWeather.weather}</Weather>
-            <div>{showImage(currentWeather.weather)}</div>
+            <Img>{showImage(currentWeather.weather)}</Img>
             <OutputWeather>
                 <TempWrap>
                     <Temp>{tempCelsius}°</Temp>
@@ -70,6 +70,7 @@ const TempWrap = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 1rem 0;
 `;
 
 const TempMaxMin = styled.div`
@@ -107,4 +108,10 @@ const Detailp = styled.p`
     margin-top: 0.2rem;
     font-size: 0.9rem;
     color: #8D8D8D;
+`;
+
+const Img = styled.div`
+    width: 27%;
+    height: 27%;
+    margin: 0 auto;
 `;

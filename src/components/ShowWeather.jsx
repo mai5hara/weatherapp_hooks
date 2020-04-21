@@ -1,12 +1,11 @@
 import React, {useContext} from 'react';
 import {WeatherContext} from '../contexts/WeatherContext';
+import { device } from '../components/layout/device';
 import styled from "styled-components";
 import InputCity from './InputCity';
-import BackImage from '../imgs/bg_img.jpg';
-import uuid from 'uuid/v1';
-import Test from './Test';
-import DailyWeather from './DailyWeather';
+import HourlyWeather from './HourlyWeather';
 import CurrentWeather from './CurrentWeather';
+import WeeklyWeather from './WeeklyWeather';
 import Clouds from '../imgs/cloud.svg';
 import Rain from '../imgs/rain.svg';
 import Clear from '../imgs/sunny.svg';
@@ -15,22 +14,19 @@ import Undefind from '../imgs/undefind.svg';
 
 const ShowWeather = () => {
     let {showWeather} = useContext(WeatherContext);
-    // setDailyWeather(showWeather.dailyWeather)
-    // console.log(dailyWeather)
-    console.log(showWeather)
 
     const showImage = (weather) => {
         switch (weather) {
             case 'Clouds':
-                return <img width="27%" height="27%" src={Clouds} alt="clouds"/>;
+                return <img width="auto" height="auto" src={Clouds} alt="clouds"/>;
             case 'Rain':
-                return <img width="27%" height="27%" src={Rain} alt="rain" />;
+                return <img width="auto" height="auto" src={Rain} alt="rain" />;
             case 'Clear':
-                return <img width="27%" height="27%" src={Clear} alt="sunny" />;
+                return <img width="auto" height="auto" src={Clear} alt="sunny" />;
             case 'Snow':
-                return <img width="27%" height="27%" src={Snow} alt="snow" />;
+                return <img width="auto" height="auto" src={Snow} alt="snow" />;
             default:
-                return <img width="27%" height="27%" src={Undefind} alt="undefind" />;
+                return <img width="auto" height="auto" src={Undefind} alt="undefind" />;
         }
     }
 
@@ -51,13 +47,8 @@ const ShowWeather = () => {
                     )}
                 </WrapLeft>
                 <WrapRight>
-                    {/* {dailyWeathers && dailyWeathers.map(dailyWeather => (
-                        <Test dailyWeather={dailyWeather} key={uuid}/>
-                    ))
-                    } */}
-                    {dailyWeathers && dailyWeathers.map(dailyWeather => (
-                        <DailyWeather dailyWeather={dailyWeather} key={uuid}/>
-                    ))}
+                    <HourlyWeather dailyWeather={dailyWeathers} showImage={showImage}/>
+                    <WeeklyWeather dailyWeather={dailyWeathers} showImage={showImage}/>
                 </WrapRight>
             </Wrap>
         </Container>
@@ -67,28 +58,44 @@ const ShowWeather = () => {
 const Container = styled.div`
     background-color: #FFF3E6;
     width: 100%;
-    height: 100vh;
+    height: auto;
+
+    @media ${device.laptop} {
+        max-width: 100%;
+        height: 100vh;
+    }
 `;
 
 const Wrap = styled.div`
     width: 100%;
-    display: flex:
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    @media ${device.laptop} {
+        display: flex;
+        flex-direction: row;
+    }
 `;
 
 const WrapLeft = styled.div`
-    width: 50%;
     text-align: center;
-    margin-top: 2.5rem;
     align-items: center;
+
+    @media ${device.laptop} {
+        margin: 1.5rem 1rem 1rem;
+        width: 50%;
+    }
 `;
 
 const WrapRight = styled.div`
-    width: 50%;
-`;
+    margin: 1rem 1.5rem 2rem 1.5rem;
 
-const Img = styled.img`
-    width: auto;
-    height: 100vh;
+    @media ${device.laptop} {
+        margin: 1.5rem 1rem 1rem;
+        width: 50%;
+
+    }
 `;
 
 export default ShowWeather;
