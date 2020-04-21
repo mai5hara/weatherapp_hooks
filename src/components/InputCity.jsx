@@ -34,6 +34,7 @@ const InputCity = () => {
 const Img = styled.img`
     width:1.1rem;
     vertical-align: middle;
+    margin: 0 auto;
 `;
 
 const Form = styled.form`
