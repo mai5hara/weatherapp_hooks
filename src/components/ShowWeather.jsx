@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import {WeatherContext} from '../contexts/WeatherContext';
+import React, { useContext } from 'react';
+import { WeatherContext } from '../contexts/WeatherContext';
 import { device } from '../components/layout/device';
 import styled from "styled-components";
 import InputCity from './InputCity';
@@ -13,12 +13,12 @@ import Snow from '../imgs/snow.svg';
 import Undefind from '../imgs/undefind.svg';
 
 const ShowWeather = () => {
-    let {showWeather} = useContext(WeatherContext);
+    let { showWeather } = useContext(WeatherContext);
 
     const showImage = (weather) => {
         switch (weather) {
             case 'Clouds':
-                return <img width="auto" height="auto" src={Clouds} alt="clouds"/>;
+                return <img width="auto" height="auto" src={Clouds} alt="clouds" />;
             case 'Rain':
                 return <img width="auto" height="auto" src={Rain} alt="rain" />;
             case 'Clear':
@@ -33,22 +33,22 @@ const ShowWeather = () => {
     const dailyWeathers = showWeather.dailyWeather
     const currentWeather = showWeather
 
-    return(
+    return (
         <Container>
             <InputCity />
             <Wrap>
                 <WrapLeft>
-                    { showWeather.loading && !showWeather.error ? (
+                    {showWeather.loading && !showWeather.error ? (
                         <p>loading...</p>
                     ) : showWeather.error ? (
                         <p>Try again..</p>
                     ) : (
-                        <CurrentWeather currentWeather={currentWeather} showImage={showImage}/>
-                    )}
+                                <CurrentWeather currentWeather={currentWeather} showImage={showImage} />
+                            )}
                 </WrapLeft>
                 <WrapRight>
-                    <HourlyWeather dailyWeather={dailyWeathers} showImage={showImage}/>
-                    <WeeklyWeather dailyWeather={dailyWeathers} showImage={showImage}/>
+                    <HourlyWeather dailyWeather={dailyWeathers} showImage={showImage} />
+                    <WeeklyWeather dailyWeather={dailyWeathers} showImage={showImage} />
                 </WrapRight>
             </Wrap>
         </Container>

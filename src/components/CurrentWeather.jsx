@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
 
-const CurrentWeather = ({currentWeather, showImage}) => {
+const CurrentWeather = ({ currentWeather, showImage }) => {
 
     const tempCelsius = Math.round(currentWeather.temp);
-    // const tempFahrenheit = Math.round((currentWeather.temp) * 1.8000 + 32.00) + '℉';
     const tempMax = Math.round(currentWeather.tempMax);
     const tempMin = Math.round(currentWeather.tempMin);
 
@@ -16,7 +15,6 @@ const CurrentWeather = ({currentWeather, showImage}) => {
             <OutputWeather>
                 <TempWrap>
                     <Temp>{tempCelsius}°</Temp>
-                    {/* <Detail>{tempFahrenheit}</Detail> */}
                     <TempMaxMin>
                         <TempMaxMinp>{tempMax}°</TempMaxMinp>
                         <TempMaxMinp>{tempMin}°</TempMaxMinp>

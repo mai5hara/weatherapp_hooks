@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 
-const EachHourWeather = ({hourlyWeather, showImage}) => {
-    console.log(hourlyWeather)
+const EachHourWeather = ({ hourlyWeather, showImage }) => {
 
     return (
         <ListWrap>
@@ -12,7 +11,7 @@ const EachHourWeather = ({hourlyWeather, showImage}) => {
                 <Temp>{hourlyWeather.hourlyTemp}°</Temp>
             </HourWeather>
         </ListWrap>
-        
+
     )
 };
 

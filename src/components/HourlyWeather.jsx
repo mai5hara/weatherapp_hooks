@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { device } from '../components/layout/device';
 import EachHourWeather from './EachHourWeather';
 import styled from "styled-components";
 
-const HourlyWeather = ({dailyWeather, showImage}) => {
-    console.log(dailyWeather)
+const HourlyWeather = ({ dailyWeather, showImage }) => {
     const [hourlyWeather, setHourlyWeather] = useState([]);
 
     useEffect(() => {
@@ -17,7 +16,6 @@ const HourlyWeather = ({dailyWeather, showImage}) => {
                 weekday: "long"
             });
         }
-        console.log(iteratedDate)
 
         let time = "";
         let temp = "";
@@ -26,12 +24,12 @@ const HourlyWeather = ({dailyWeather, showImage}) => {
 
         dailyWeather && dailyWeather.forEach((entry) => {
             const dateString = new Date(entry.dt * 1000).toLocaleString(
-                "en-US", {weekday: "long"}
+                "en-US", { weekday: "long" }
             );
 
-            if (iteratedDate === dateString){
+            if (iteratedDate === dateString) {
                 const date = new Date(entry.dt * 1000).toLocaleString(
-                    "en-US", {hour: "numeric", hour12: true});
+                    "en-US", { hour: "numeric", hour12: true });
                 time = date;
                 temp = Math.round(entry.main.temp - 273.15);
                 weather = entry.weather[0].main;
@@ -43,13 +41,13 @@ const HourlyWeather = ({dailyWeather, showImage}) => {
                 });
             }
         })
-    setHourlyWeather(hourlyArr);
-    },[dailyWeather]);
+        setHourlyWeather(hourlyArr);
+    }, [dailyWeather]);
 
     return (
         <HourWeather>
-            { hourlyWeather && hourlyWeather.map((entry, uuid) => (
-                <EachHourWeather key={uuid} hourlyWeather={entry} showImage={showImage}/>
+            {hourlyWeather && hourlyWeather.map((entry, uuid) => (
+                <EachHourWeather key={uuid} hourlyWeather={entry} showImage={showImage} />
             ))}
         </HourWeather>
     )

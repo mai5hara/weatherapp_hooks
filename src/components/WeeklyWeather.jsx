@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import EachDayWeather from './EachDayWeather';
 import { device } from '../components/layout/device';
 import styled from "styled-components";
@@ -8,7 +8,7 @@ const WeeklyWeather = ({ dailyWeather, showImage }) => {
 
     useEffect(() => {
         let iteratedDate;
-        
+
         if (dailyWeather) {
             iteratedDate = new Date(
                 Object.entries(dailyWeather)[0][1].dt * 1000
@@ -25,7 +25,7 @@ const WeeklyWeather = ({ dailyWeather, showImage }) => {
         const getHighestFrequency = (arr) => {
             return arr
                 .sort((a, b) => arr.filter((v) => v === a)
-                .length - arr.filter((v) => v === b).length).pop();
+                    .length - arr.filter((v) => v === b).length).pop();
         };
 
         dailyWeather && dailyWeather.forEach((entry) => {
@@ -53,13 +53,13 @@ const WeeklyWeather = ({ dailyWeather, showImage }) => {
         })
 
         setFiveDayForecast(forecastArr);
-        }, [dailyWeather]);
+    }, [dailyWeather]);
 
 
     return (
         <DayWeather>
-            { fiveDayForecast && fiveDayForecast.map((entry, uuid) => (
-                <EachDayWeather weekday={entry} key={uuid} showImage={showImage}/>
+            {fiveDayForecast && fiveDayForecast.map((entry, uuid) => (
+                <EachDayWeather weekday={entry} key={uuid} showImage={showImage} />
             ))}
         </DayWeather>
     );

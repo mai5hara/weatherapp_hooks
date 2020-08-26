@@ -1,16 +1,15 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import { WeatherContext } from '../contexts/WeatherContext';
 import { device } from '../components/layout/device';
 import styled from "styled-components";
 import search from '../imgs/search_white.png';
 
 const InputCity = () => {
-    const {searchtWeather} = useContext(WeatherContext);
+    const { searchtWeather } = useContext(WeatherContext);
     const [InputValue, SetInputValue] = useState('');
 
     const onChangeInput = (e) => {
         SetInputValue(e.target.value);
-        console.log(InputValue)
     }
 
     const resetInputField = () => {
@@ -26,7 +25,7 @@ const InputCity = () => {
     return (
         <Form>
             <Input type="text" placeholder="City Name" name={InputValue} value={InputValue} onChange={onChangeInput} />
-            <Button type="submit" onClick={callInputValue}><Img src={search}/></Button>
+            <Button type="submit" onClick={callInputValue}><Img src={search} /></Button>
         </Form>
     )
 };
@@ -58,7 +57,7 @@ const Input = styled.input`
     }
 `;
 
-const Button =styled.button`
+const Button = styled.button`
 width: 35px;
 height: 35px;
 border-radius: 50%;
